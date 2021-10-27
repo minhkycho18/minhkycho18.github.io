@@ -1,0 +1,123 @@
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+const apiKey = '37f82e5a1b9cd3c66ff3594478032bf7';
+const session_id = 'e06815cd40088621e4ba6379df0592ad403418c1';
+const list_id = 7111533;
+
+
+
+const mainHeader = document.querySelector('.main');
+var allSlider ;
+var currentSlider = 0;   
+var listVideosKey =[] ;
+var count =0;
+// render ra html từ api
+getSliderMovie(renderSliderMovies);
+
+function getSliderMovie(callback){
+    fetch('https://api.themoviedb.org/3/list/7111533?api_key=37f82e5a1b9cd3c66ff3594478032bf7&language=en-US')
+    .then(function(response){
+        return response.json();
+    })
+    .then(callback)
+}
+
+
+function renderSliderMovies(movies){
+    ListMovies = movies.items; 
+        ListMovies.forEach(function(movie){
+            
+            fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${apiKey}&language=en-US`)
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(videos){
+                for(var i=0; i< videos.results.length ; i++){
+                    if(videos.results[i].type == "Trailer") {                      
+                        movie.key = videos.results[i].key;
+                        break;
+                    }
+                }
+            })
+            
+        })
+        
+        
+        let html = "";
+        html= ListMovies.map(function(movie,index){
+            return `
+            <div class="header slider${index+1}" data-index="${index+1}" >
+            
+            <img src="https://image.tmdb.org/t/p/w500${movie.backdrop_path}" alt="" class="image_main">
+            <div class="header-content">
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="">
+            <div class="header-content-box">
+            <h2 class="header-content-box-title">${movie.original_title}</h2>
+            <div class="vote_average"><span class="imdb">IMDb</span> <span class="imdb_point">: ${movie.vote_average}</span> <i class="fa fa-star" ></i></div>
+            <div class="release_day"><i class="fa fa-clock-o" ></i> <span> : ${movie.release_date}</span></div>
+            <p class="header-content-box-description">${movie.overview}</p>
+            <div class="header-content-watch">
+            <button class="now">Watch Now</button>
+            <button class="trailer">Watch Trailer</button>
+            </div>
+            </div>
+            </div>
+            
+            </div>
+            `
+        }) 
+        mainHeader.innerHTML = `
+        <div class="header-bar">
+        <h2 class="header-bar-name">MinMovie</h2>
+        <ul class="header-bar-nav">
+        <li>Home</li>
+        <li>Movies</li>
+        <li>TV Series</li>
+        </ul>
+        </div>    
+        ${html.join("")}
+        <span class="next-btn ti-angle-right"></span>
+        <span class="prev-btn ti-angle-left"></span>
+        `    
+        
+        const nextBtn=document.querySelector('.next-btn');
+        const prevBtn=document.querySelector('.prev-btn');
+        allSlider = document.querySelectorAll('.header');
+        
+        nextBtn.onclick = function(){
+            currentSlider++;
+            if(currentSlider <5){
+                Array.from(allSlider).forEach(function(slider){
+                    slider.style.transform = `translateX(${-100*currentSlider}%)`;                       
+                })
+            } else {
+                Array.from(allSlider).forEach(function(slider){
+                    slider.style.transform = "";                       
+                })
+                currentSlider=0;
+            }
+        }
+        prevBtn.onclick = function(){
+            currentSlider--;
+            if(currentSlider == -1 ){
+                Array.from(allSlider).forEach(function(slider){
+                    slider.style.transform = "translateX(-400%)";                       
+                })
+                currentSlider=2;
+            } else {
+                Array.from(allSlider).forEach(function(slider){
+                    slider.style.transform = `translateX(${-100*currentSlider}%)`;                                 
+                })
+                
+            }
+        }
+        setInterval(function(){
+            nextBtn.click();
+        },10000)      
+        
+        
+    }
+    
+    
+    
+  

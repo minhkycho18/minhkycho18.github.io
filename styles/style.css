@@ -1,0 +1,576 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: black;
+}
+
+.main {
+  position: relative;
+  overflow: hidden;
+}
+.main .header-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  top: 30px;
+  color: white;
+  z-index: 1;
+}
+.main .header-bar-nav {
+  margin-right: 60px;
+}
+.main .header-bar-nav li {
+  position: relative;
+  display: inline-block;
+  margin: 0px 15px;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.main .header-bar-nav li:hover {
+  color: #e25f37;
+}
+.main .header-bar-nav li::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 0px;
+  height: 2px;
+  background-color: #e25f37;
+  transition: 0.3s;
+}
+.main .header-bar-nav li:hover::before {
+  width: 100%;
+}
+.main .header-bar-name {
+  margin-left: 30px;
+  letter-spacing: 4px;
+}
+.main .header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+.main .header .image_main {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+.main .header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+.main .header-content {
+  position: absolute;
+  top: 220px;
+  left: 45%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .header-content img {
+  width: 350px;
+  height: 450px;
+  border-radius: 20px;
+}
+.main .header-content-box {
+  width: 600px;
+  height: 400px;
+  margin-left: 50px;
+  color: white;
+}
+.main .header-content-box-title {
+  margin-top: 20px;
+  font-size: 40px;
+  font-weight: 600;
+}
+.main .header-content-box-description {
+  margin: 25px 0px;
+  font-size: 16px;
+}
+.main .header-content-box .now {
+  padding: 15px 40px;
+  background-color: transparent;
+  border: solid #e25f37 1px;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 200px;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 1;
+}
+.main .header-content-box .now:hover {
+  background-color: #e25f37;
+  box-shadow: 0px 0px 15px 0px #e25f37;
+}
+.main .header-content-box .trailer {
+  padding: 15px 40px;
+  background-color: transparent;
+  border: solid #e25f37 1px;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 200px;
+  transition: 0.3s;
+  cursor: pointer;
+  margin-left: 15px;
+  z-index: 1;
+}
+.main .header-content-box .trailer:hover {
+  background-color: #e25f37;
+  box-shadow: 0px 0px 15px 0px #e25f37;
+}
+.main .header-content-box .vote_average {
+  margin-top: 10px;
+  position: relative;
+}
+.main .header-content-box .vote_average .imdb {
+  padding: 4px;
+  background-color: #cfbd18;
+  color: black;
+  font-size: 13px;
+  font-weight: 900;
+  border-radius: 10px;
+  position: absolute;
+}
+.main .header-content-box .vote_average .imdb_point {
+  position: absolute;
+  font-size: 17px;
+  top: 0;
+  left: 50px;
+}
+.main .header-content-box .vote_average i {
+  position: absolute;
+  left: 86px;
+  top: 5px;
+  color: #f7e11c;
+}
+.main .header-content-box .release_day {
+  margin-top: 60px;
+}
+.main .header-content-box .release_day i {
+  color: #f7e11c;
+  font-size: 15px;
+}
+.main .slider1 {
+  position: relative;
+  top: 0;
+  transition: 1s;
+}
+.main .slider2 {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transition: 1s;
+}
+.main .slider3 {
+  position: absolute;
+  top: 0;
+  left: 200%;
+  transition: 1s;
+}
+.main .slider4 {
+  position: absolute;
+  top: 0;
+  left: 300%;
+  transition: 1s;
+}
+.main .slider5 {
+  position: absolute;
+  top: 0;
+  left: 400%;
+  transition: 1s;
+}
+.main .next-btn {
+  position: absolute;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+  top: 50%;
+  right: 20px;
+  z-index: 1;
+  transition: 0.3s;
+}
+.main .next-btn:hover {
+  font-size: 45px;
+}
+.main .prev-btn {
+  position: absolute;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+  top: 50%;
+  left: 20px;
+  z-index: 1;
+  transition: 0.3s;
+}
+.main .prev-btn:hover {
+  font-size: 45px;
+}
+.main .header-trailer {
+  position: relative;
+  top: 0;
+  left: -100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  z-index: 100;
+  transition: 1s;
+}
+.main .header-trailer .close-tab {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  cursor: pointer;
+}
+.main .header-trailer .close-tab i {
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  transition: 0.3s;
+}
+.main .header-trailer .close-tab i:hover {
+  color: #e25f37;
+}
+.main .header-trailer .videos {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main .header-trailer.active {
+  display: block;
+  transform: translateX(100%);
+}
+.main .shadow_footer {
+  width: 100%;
+  height: 70px;
+}
+.main::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(transparent, black);
+  z-index: 1;
+}
+
+.main-content {
+  margin-top: 50px;
+}
+.main-content .content-movies {
+  width: 100%;
+  position: relative;
+}
+.main-content .content-movies_title {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-content .content-movies_title span {
+  font-size: 60px;
+  font-weight: 900;
+  background-image: linear-gradient(to right, #f12711, #f5af19);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+.main-content .content-movies_title i {
+  color: yellow;
+  font-size: 30px;
+  margin-right: 10px;
+  transform: rotateZ(40deg);
+}
+.main-content .content-movies .search-form {
+  position: absolute;
+  right: 100px;
+  top: 130px;
+}
+.main-content .content-movies .search-form i {
+  color: white;
+  font-size: 18px;
+  margin-right: 10px;
+}
+.main-content .content-movies .search-form .search {
+  background-color: transparent;
+  padding: 13px;
+  border-radius: 100px;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  border: solid white 1px;
+}
+.main-content .content-movies_features {
+  margin-top: 110px;
+  width: 100%;
+  text-align: center;
+}
+.main-content .content-movies_features .genres-box {
+  width: 100%;
+  text-align: center;
+}
+.main-content .content-movies_features .genres-box .genre {
+  color: white;
+  border: solid #e25f37 1px;
+  border-radius: 40px;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  margin: 5px 8px;
+  transition: 0.2s;
+}
+.main-content .content-movies_features .genres-box .genre:hover {
+  background-color: #e25f37;
+  box-shadow: 0px 0px 10px 0px #e25f37;
+}
+.main-content .content-movies_features .genres-box .genre.active {
+  background-color: #e25f37;
+  box-shadow: 0px 0px 10px 0px #e25f37;
+}
+.main-content .content-movies_features .clear {
+  color: white;
+  border: solid #eb1414 1px;
+  border-radius: 40px;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  margin: 5px 8px;
+  transition: 0.2s;
+}
+.main-content .content-movies_features .clear.active {
+  background-color: #eb1414;
+  box-shadow: 0px 0px 10px 0px #eb1414;
+}
+.main-content .content-movies .list-movies {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.main-content .content-movies .list-movies .movie {
+  width: 16%;
+  margin: 10px 13px;
+}
+.main-content .content-movies .list-movies .movie .poster-box {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+.main-content .content-movies .list-movies .movie .poster-box .movie_poster {
+  width: 100%;
+  height: 350px;
+  border-radius: 15px;
+}
+.main-content .content-movies .list-movies .movie .poster-box .movie_background {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+  transition: 0.2s;
+  opacity: 0;
+}
+.main-content .content-movies .list-movies .movie .poster-box .movie_background:hover {
+  opacity: 1;
+}
+.main-content .content-movies .list-movies .movie .poster-box .movie_background span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e25f37;
+  box-shadow: 0px 0px 10px 1px #e25f37;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.main-content .content-movies .list-movies .movie .poster-box .movie_background span i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 40px;
+}
+.main-content .content-movies .list-movies .movie .poster-box .movie_point {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #e25f37;
+  font-size: 18px;
+  padding: 8px;
+  background-color: black;
+  font-weight: 700;
+  border-radius: 10px;
+}
+.main-content .content-movies .list-movies .movie_title {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+}
+.main-content .content-movies .change_movies {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.main-content .content-movies .change_movies .more {
+  width: 170px;
+  height: 50px;
+  color: white;
+  padding: 10px 20px;
+  border: solid #e25f37 1px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.main-content .content-movies .change_movies .more:hover {
+  background-color: #e25f37;
+  box-shadow: 0px 0px 10px 0px #e25f37;
+}
+.main-content .content-movies .change_movies .next-movies {
+  width: 170px;
+  height: 50px;
+  color: white;
+  padding: 10px 20px;
+  border: solid #e25f37 1px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.main-content .content-movies .change_movies .next-movies:hover {
+  background-color: #e25f37;
+  box-shadow: 0px 0px 10px 0px #e25f37;
+}
+.main-content .content-movies .change_movies .prev-movies {
+  width: 170px;
+  height: 50px;
+  color: white;
+  padding: 10px 20px;
+  border: solid #e25f37 1px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.main-content .content-movies .change_movies .prev-movies:hover {
+  background-color: #e25f37;
+  box-shadow: 0px 0px 10px 0px #e25f37;
+}
+.main-content .content-tv {
+  margin-top: 50px;
+}
+
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  height: 100%;
+  width: 0;
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: black;
+  /* Black fallback color */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/opacity */
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%;
+  /* 25% from the top */
+  width: 100%;
+  /* 100% width */
+  text-align: center;
+  /* Centered text/links */
+  margin-top: 30px;
+  /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+.overlay-content .iframe {
+  display: inline-block;
+  margin: 40px 0px;
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  /* Display block instead of inline */
+  transition: 0.3s;
+  /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
