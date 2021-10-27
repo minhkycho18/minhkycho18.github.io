@@ -84,7 +84,7 @@ body {
 }
 .main .header-content {
   position: absolute;
-  top: 220px;
+  top: 190px;
   left: 45%;
   transform: translateX(-50%);
   width: 70%;
@@ -103,6 +103,7 @@ body {
   height: 400px;
   margin-left: 50px;
   color: white;
+  margin-bottom: 110px;
 }
 .main .header-content-box-title {
   margin-top: 20px;
